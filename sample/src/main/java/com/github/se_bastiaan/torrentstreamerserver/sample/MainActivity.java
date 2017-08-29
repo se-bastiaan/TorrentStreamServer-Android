@@ -148,7 +148,6 @@ public class MainActivity extends AppCompatActivity implements TorrentServerList
     @Override
     public void onStreamPrepared(Torrent torrent) {
         Log.d(TORRENT, "OnStreamPrepared");
-        torrent.startDownload();
     }
 
     @Override

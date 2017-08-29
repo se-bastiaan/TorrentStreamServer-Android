@@ -158,8 +158,6 @@ public class TorrentStreamServer {
 
         @Override
         public void onStreamPrepared(Torrent torrent) {
-            torrent.startDownload();
-
             for (TorrentServerListener listener : listeners) {
                 listener.onStreamPrepared(torrent);
             }
