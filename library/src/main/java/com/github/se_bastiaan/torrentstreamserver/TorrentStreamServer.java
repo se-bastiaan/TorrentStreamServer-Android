@@ -148,6 +148,26 @@ public class TorrentStreamServer {
     }
 
     /**
+     * Set SRT subtitle file of active stream
+     * @param file {@link File} SRT subtitle
+     */
+    public void setStreamSrtSubtitle(File file) {
+        if (this.torrentStreamWebServer != null && this.torrentStreamWebServer.wasStarted()) {
+            this.torrentStreamWebServer.setSrtSubtitleLocation(file);
+        }
+    }
+
+    /**
+     * Set SRT subtitle file of active stream
+     * @param file {@link File} VTT subtitle
+     */
+    public void setStreamVttSubtitle(File file) {
+        if (this.torrentStreamWebServer != null && this.torrentStreamWebServer.wasStarted()) {
+            this.torrentStreamWebServer.setVttSubtitleLocation(file);
+        }
+    }
+
+    /**
      * Stop current torrent stream
      */
     public void stopStream() {
