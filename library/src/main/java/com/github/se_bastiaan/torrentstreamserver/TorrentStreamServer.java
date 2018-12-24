@@ -62,6 +62,18 @@ public class TorrentStreamServer {
         return this.torrentStream.isStreaming();
     }
 
+    public void resumeSession() {
+        if (torrentStream != null) {
+            this.torrentStream.resumeSession();
+        }
+    }
+
+    public void pauseSession() {
+        if (torrentStream != null) {
+            this.torrentStream.pauseSession();
+        }
+    }
+
     public String getCurrentTorrentUrl() {
         if (torrentStream == null) {
             return null;
