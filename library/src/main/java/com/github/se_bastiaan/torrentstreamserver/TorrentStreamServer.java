@@ -95,6 +95,13 @@ public class TorrentStreamServer {
         return this.torrentStream.getCurrentTorrent();
     }
 
+    public String getCurrentStreamUrl() {
+        if (this.torrentStreamWebServer == null || !this.torrentStreamWebServer.wasStarted()) {
+            return null;
+        }
+        return this.torrentStreamWebServer.getStreamUrl();
+    }
+
     public void addListener(TorrentServerListener listener) {
         if (listener != null) {
             listeners.add(listener);
