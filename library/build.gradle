@@ -41,7 +41,7 @@ android {
 }
 
 ext {
-    torrentStreamVersion = '2.6.1'
+    torrentStreamVersion = '2.5.0'
 }
 
 dependencies {
