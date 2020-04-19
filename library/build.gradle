@@ -20,12 +20,11 @@ apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.TorrentStream'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 29
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 28
+        targetSdkVersion 29
     }
 
     buildTypes {
@@ -41,7 +40,7 @@ android {
 }
 
 ext {
-    torrentStreamVersion = '2.6.1'
+    torrentStreamVersion = '2.7.0'
 }
 
 dependencies {
