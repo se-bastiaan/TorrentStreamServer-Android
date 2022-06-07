@@ -132,21 +132,32 @@ public class TorrentStreamServer {
      * @param torrentUrl {@link String} .torrent or magnet link
      */
     public void startStream(String torrentUrl) throws IOException, TorrentStreamNotInitializedException {
-        startStream(torrentUrl, null, null);
+        startStream(torrentUrl, "", null, null);
+    }
+
+    /**
+     * Start stream download for specified torrent and file
+     *
+     * @param torrentUrl {@link String} .torrent or magnet link
+     * @param file {@link String} file in torrent
+     */
+    public void startStream(String torrentUrl, String file) throws IOException, TorrentStreamNotInitializedException {
+        startStream(torrentUrl, file, null, null);
     }
 
     /**
      * Start stream download for specified torrent
      *
      * @param torrentUrl {@link String} .torrent or magnet link
+     * @param file {@link String} file in torrent
      * @param srtSubtitleFile {@link File} SRT subtitle
      * @param vttSubtitleFile {@link File} VTT subtitle
      */
-    public void startStream(String torrentUrl, File srtSubtitleFile, File vttSubtitleFile) throws TorrentStreamNotInitializedException, IOException {
+    public void startStream(String torrentUrl, String file, File srtSubtitleFile, File vttSubtitleFile) throws TorrentStreamNotInitializedException, IOException {
         if (this.torrentStream == null) {
             throw new TorrentStreamNotInitializedException();
         }
-        this.torrentStream.startStream(torrentUrl);
+        this.torrentStream.startStream(torrentUrl, file);
 
         this.torrentStreamWebServer = new TorrentStreamWebServer(serverHost, serverPort);
         this.torrentStreamWebServer.setSrtSubtitleLocation(srtSubtitleFile);
