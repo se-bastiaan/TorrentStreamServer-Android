@@ -29,8 +29,6 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -38,11 +36,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 import com.github.se_bastiaan.torrentstream.StreamStatus;
 import com.github.se_bastiaan.torrentstream.Torrent;
 import com.github.se_bastiaan.torrentstream.TorrentOptions;
-import com.github.se_bastiaan.torrentstream.TorrentStream;
-import com.github.se_bastiaan.torrentstream.listeners.TorrentListener;
 import com.github.se_bastiaan.torrentstreamserver.TorrentServerListener;
 import com.github.se_bastiaan.torrentstreamserver.TorrentStreamNotInitializedException;
 import com.github.se_bastiaan.torrentstreamserver.TorrentStreamServer;
@@ -88,9 +87,9 @@ public class MainActivity extends AppCompatActivity implements TorrentServerList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        videoLocationText = (TextView) findViewById(R.id.video_location_text);
-        button = (Button) findViewById(R.id.button);
-        progressBar = (ProgressBar) findViewById(R.id.progress);
+        videoLocationText = findViewById(R.id.video_location_text);
+        button = findViewById(R.id.button);
+        progressBar = findViewById(R.id.progress);
 
         String action = getIntent().getAction();
         Uri data = getIntent().getData();
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements TorrentServerList
         }
 
         TorrentOptions torrentOptions = new TorrentOptions.Builder()
-                .saveLocation(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS))
+                .saveLocation(getFilesDir())
                 .removeFilesAfterStop(true)
                 .build();
 
@@ -192,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements TorrentServerList
     }
 
     public static InetAddress getIpAddress(Context context) throws UnknownHostException {
-        WifiManager wifiMgr = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifiMgr = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
         int ip = wifiInfo.getIpAddress();
 

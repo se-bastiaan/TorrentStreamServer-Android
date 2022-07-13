@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015-2016 Sébastiaan (github.com/se-bastiaan)
+ * Copyright (C) 2015-2022 Sébastiaan (github.com/se-bastiaan)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,18 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
+plugins {
+    id 'com.android.library'
+}
 
 group='com.github.TorrentStream'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 32
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 29
+        minSdk 15
+        targetSdk 32
     }
 
     buildTypes {
@@ -40,7 +41,7 @@ android {
 }
 
 ext {
-    torrentStreamVersion = '2.7.0'
+    torrentStreamVersion = '3.0.0'
 }
 
 dependencies {
